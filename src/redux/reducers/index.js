@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import empresas from "./empresaReducer";
+import companies from "./companyReducer";
 
 const rootReducer = combineReducers({
-  empresas
+  companies
 });
 
 export default rootReducer;

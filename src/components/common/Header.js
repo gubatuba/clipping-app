@@ -9,11 +9,11 @@ const Header = () => {
         Home
       </NavLink>
       {" | "}
-      <NavLink to="/empresas" activeStyle={activeStyle}>
+      <NavLink to="/companies" activeStyle={activeStyle}>
         Empresas
       </NavLink>
       {" | "}
-      <NavLink to="/clientes" activeStyle={activeStyle}>
+      <NavLink to="/clients" activeStyle={activeStyle}>
         Clientes
       </NavLink>
     </nav>

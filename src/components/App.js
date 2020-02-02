@@ -3,8 +3,8 @@ import { Route, Switch } from "react-router-dom";
 import HomePage from "./home/HomePage";
 import Header from "./common/Header";
 import PageNotFound from "./PageNotFound";
-import EmpresasPage from "./empresas/EmpresasPage";
-import ClientesPage from "./clientes/ClientesPage";
+import CompaniesPage from "./companies/CompaniesPage";
+import ClientsPage from "./clients/ClientsPage";
 
 function App() {
   return (
@@ -12,8 +12,8 @@ function App() {
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/empresas" component={EmpresasPage} />
-        <Route exact path="/clientes" component={ClientesPage} />
+        <Route exact path="/companies" component={CompaniesPage} />
+        <Route exact path="/clients" component={ClientsPage} />
         <Route component={PageNotFound} />
       </Switch>
     </div>
