@@ -12,6 +12,10 @@ const Header = () => {
       <NavLink to="/empresas" activeStyle={activeStyle}>
         Empresas
       </NavLink>
+      {" | "}
+      <NavLink to="/clientes" activeStyle={activeStyle}>
+        Clientes
+      </NavLink>
     </nav>
   );
 };
