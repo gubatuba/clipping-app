@@ -27,7 +27,8 @@ const companies = [
       phone: "2112345678",
       celphone: "21123456789",
       email: "emailfin@empresa1.com"
-    }
+    },
+    products: [{ id: 1 }, { id: 2 }, { id: 3 }]
   },
   {
     id: 2,
@@ -57,7 +58,8 @@ const companies = [
       phone: "2112345678",
       celphone: "21123456789",
       email: "emailfin@empresa2.com"
-    }
+    },
+    products: [{ id: 1 }, { id: 2 }, { id: 3 }]
   },
   {
     id: 3,
@@ -87,7 +89,8 @@ const companies = [
       phone: "2112345678",
       celphone: "21123456789",
       email: "emailfin@empresa3.com"
-    }
+    },
+    products: [{ id: 1 }, { id: 2 }, { id: 3 }]
   },
   {
     id: 4,
@@ -117,7 +120,8 @@ const companies = [
       phone: "2112345678",
       celphone: "21123456789",
       email: "emailfin@empresa4.com"
-    }
+    },
+    products: [{ id: 1 }, { id: 2 }, { id: 3 }]
   },
   {
     id: 5,
@@ -147,7 +151,8 @@ const companies = [
       phone: "2112345678",
       celphone: "21123456789",
       email: "emailfin@empresa5.com"
-    }
+    },
+    products: [{ id: 1 }, { id: 2 }, { id: 3 }]
   },
   {
     id: 6,
@@ -177,7 +182,8 @@ const companies = [
       phone: "2112345678",
       celphone: "21123456789",
       email: "emailfin@empresa6.com"
-    }
+    },
+    products: [{ id: 1 }, { id: 2 }, { id: 3 }]
   },
   {
     id: 7,
@@ -207,7 +213,8 @@ const companies = [
       phone: "2112345678",
       celphone: "21123456789",
       email: "emailfin@empresa7.com"
-    }
+    },
+    products: [{ id: 1 }, { id: 2 }, { id: 3 }]
   },
   {
     id: 8,
@@ -237,7 +244,8 @@ const companies = [
       phone: "2112345678",
       celphone: "21123456789",
       email: "emailfin@empresa8.com"
-    }
+    },
+    products: [{ id: 1 }, { id: 2 }, { id: 3 }]
   },
   {
     id: 9,
@@ -267,7 +275,8 @@ const companies = [
       phone: "2112345678",
       celphone: "21123456789",
       email: "emailfin@empresa9.com"
-    }
+    },
+    products: [{ id: 1 }, { id: 2 }, { id: 3 }]
   },
   {
     id: 10,
@@ -297,7 +306,8 @@ const companies = [
       phone: "2112345678",
       celphone: "21123456789",
       email: "emailfin@empresa10.com"
-    }
+    },
+    products: [{ id: 1 }, { id: 2 }, { id: 3 }]
   }
 ];
 
@@ -305,6 +315,29 @@ const authors = [
   { id: 1, name: "Cory House" },
   { id: 2, name: "Scott Allen" },
   { id: 3, name: "Dan Wahlin" }
+];
+
+const products = [
+  {
+    id: 1,
+    name: "Seguros - Eventos",
+    type: "report"
+  },
+  {
+    id: 2,
+    name: "Seguros - Mercado",
+    type: "report"
+  },
+  {
+    id: 3,
+    name: "Clipping - Seguros",
+    type: "clipping"
+  },
+  {
+    id: 4,
+    name: "Clipping - Saúde",
+    type: "clipping"
+  }
 ];
 
 const newCompany = {
@@ -335,12 +368,14 @@ const newCompany = {
     phone: "",
     celphone: "",
     email: ""
-  }
+  },
+  products: []
 };
 
 // Using CommonJS style export so we can consume via Node (without using Babel-node)
 module.exports = {
   newCompany,
   companies,
-  authors
+  authors,
+  products
 };
