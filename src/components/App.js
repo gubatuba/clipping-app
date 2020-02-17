@@ -5,6 +5,7 @@ import Header from "./common/Header";
 import PageNotFound from "./PageNotFound";
 import CompaniesPage from "./companies/CompaniesPage";
 import ClientsPage from "./clients/ClientsPage";
+import ManageCompanyPage from "./companies/ManageCompanyPage";
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/companies" component={CompaniesPage} />
         <Route exact path="/clients" component={ClientsPage} />
+        <Route exact path="/company/:slug" component={ManageCompanyPage} />
+        <Route exact path="/company" component={ManageCompanyPage} />
         <Route component={PageNotFound} />
       </Switch>
     </div>

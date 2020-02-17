@@ -5,14 +5,10 @@ import * as productActions from "../../redux/actions/ProductActions";
 import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import CompanyList from "./CompanyList";
+import { sendMethods } from "../constants/SendMethod";
 
 class CompaniesPage extends React.Component {
   componentDidMount() {
-    if (this.props.products.length === 0) {
-      this.props.actions.loadProducts().catch(error => {
-        alert("Loading products failed " + error);
-      });
-    }
     if (this.props.companies.length === 0) {
       this.props.actions.loadCompanies().catch(error => {
         alert("Loading companies failed " + error);
@@ -30,9 +26,8 @@ class CompaniesPage extends React.Component {
 }
 
 CompaniesPage.propTypes = {
-  actions: PropTypes.object.isRequired,
-  products: PropTypes.array.isRequired,
-  companies: PropTypes.array.isRequired
+  companies: PropTypes.array.isRequired,
+  actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
@@ -40,16 +35,7 @@ function mapStateToProps(state) {
     companies: state.companies.map(company => {
       return {
         ...company,
-        products:
-          state.products.length === 0
-            ? []
-            : company.products.map(product => {
-                return {
-                  ...product,
-                  productName: state.products.find(a => a.id === product.id)
-                    .name
-                };
-              })
+        sendMethodName: sendMethods.find(a => a.id === company.sendMethod).name
       };
     }),
     products: state.products

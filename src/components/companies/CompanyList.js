@@ -23,7 +23,7 @@ const CompanyList = ({ companies }) => (
             <td>{company.contact.name}</td>
             <td>{company.contact.email}</td>
             <td>{company.contact.phone}</td>
-            <td>{company.products[0].productName}</td>
+            <td>{company.sendMethodName}</td>
           </tr>
         );
       })}

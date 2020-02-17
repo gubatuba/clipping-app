@@ -49,7 +49,7 @@ server.post("/companies/", function(req, res, next) {
   if (error) {
     res.status(400).send(error);
   } else {
-    req.body.slug = createSlug(req.body.nome); // Generate a slug for new courses.
+    req.body.slug = createSlug(req.body.name); // Generate a slug for new courses.
     next();
   }
 });
@@ -74,8 +74,5 @@ function createSlug(value) {
 }
 
 function validateCompany(company) {
-  if (!company.name) return "Nome da empresa é obrigatório.";
-  if (!company.contact.name) return "Nome do contato é obrigatório.";
-  if (!company.contact.email) return "Nome do contato é obrigatório.";
   return "";
 }

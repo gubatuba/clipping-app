@@ -28,7 +28,8 @@ const companies = [
       celphone: "21123456789",
       email: "emailfin@empresa1.com"
     },
-    products: [{ id: 1 }, { id: 2 }, { id: 3 }]
+    products: [{ id: 1 }, { id: 2 }, { id: 3 }],
+    sendMethod: 1
   },
   {
     id: 2,
@@ -59,7 +60,8 @@ const companies = [
       celphone: "21123456789",
       email: "emailfin@empresa2.com"
     },
-    products: [{ id: 1 }, { id: 2 }, { id: 3 }]
+    products: [{ id: 1 }, { id: 2 }, { id: 3 }],
+    sendMethod: 2
   },
   {
     id: 3,
@@ -90,7 +92,8 @@ const companies = [
       celphone: "21123456789",
       email: "emailfin@empresa3.com"
     },
-    products: [{ id: 1 }, { id: 2 }, { id: 3 }]
+    products: [{ id: 1 }, { id: 2 }, { id: 3 }],
+    sendMethod: 1
   },
   {
     id: 4,
@@ -121,7 +124,8 @@ const companies = [
       celphone: "21123456789",
       email: "emailfin@empresa4.com"
     },
-    products: [{ id: 1 }, { id: 2 }, { id: 3 }]
+    products: [{ id: 1 }, { id: 2 }, { id: 3 }],
+    sendMethod: 1
   },
   {
     id: 5,
@@ -152,7 +156,8 @@ const companies = [
       celphone: "21123456789",
       email: "emailfin@empresa5.com"
     },
-    products: [{ id: 1 }, { id: 2 }, { id: 3 }]
+    products: [{ id: 1 }, { id: 2 }, { id: 3 }],
+    sendMethod: 1
   },
   {
     id: 6,
@@ -183,7 +188,8 @@ const companies = [
       celphone: "21123456789",
       email: "emailfin@empresa6.com"
     },
-    products: [{ id: 1 }, { id: 2 }, { id: 3 }]
+    products: [{ id: 1 }, { id: 2 }, { id: 3 }],
+    sendMethod: 1
   },
   {
     id: 7,
@@ -214,7 +220,8 @@ const companies = [
       celphone: "21123456789",
       email: "emailfin@empresa7.com"
     },
-    products: [{ id: 1 }, { id: 2 }, { id: 3 }]
+    products: [{ id: 1 }, { id: 2 }, { id: 3 }],
+    sendMethod: 1
   },
   {
     id: 8,
@@ -245,7 +252,8 @@ const companies = [
       celphone: "21123456789",
       email: "emailfin@empresa8.com"
     },
-    products: [{ id: 1 }, { id: 2 }, { id: 3 }]
+    products: [{ id: 1 }, { id: 2 }, { id: 3 }],
+    sendMethod: 1
   },
   {
     id: 9,
@@ -276,7 +284,8 @@ const companies = [
       celphone: "21123456789",
       email: "emailfin@empresa9.com"
     },
-    products: [{ id: 1 }, { id: 2 }, { id: 3 }]
+    products: [{ id: 1 }, { id: 2 }, { id: 3 }],
+    sendMethod: 2
   },
   {
     id: 10,
@@ -307,7 +316,8 @@ const companies = [
       celphone: "21123456789",
       email: "emailfin@empresa10.com"
     },
-    products: [{ id: 1 }, { id: 2 }, { id: 3 }]
+    products: [{ id: 1 }, { id: 2 }, { id: 3 }],
+    sendMethod: 1
   }
 ];
 
@@ -369,7 +379,8 @@ const newCompany = {
     celphone: "",
     email: ""
   },
-  products: []
+  products: [],
+  sendMethod: null
 };
 
 // Using CommonJS style export so we can consume via Node (without using Babel-node)
