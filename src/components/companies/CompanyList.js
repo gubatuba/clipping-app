@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-const CompanyList = ({ companies }) => (
+const CompanyList = ({ companies, onDeleteClick }) => (
   <table className="table">
     <thead>
       <tr>
@@ -11,6 +11,7 @@ const CompanyList = ({ companies }) => (
         <th>Email</th>
         <th>Telefone</th>
         <th>Produto</th>
+        <th />
       </tr>
     </thead>
     <tbody>
@@ -20,10 +21,18 @@ const CompanyList = ({ companies }) => (
             <td>
               <Link to={"/company/" + company.slug}>{company.name}</Link>
             </td>
-            <td>{company.contact.name}</td>
-            <td>{company.contact.email}</td>
-            <td>{company.contact.phone}</td>
+            <td>{company.contactName}</td>
+            <td>{company.contactEmail}</td>
+            <td>{company.contactPhone}</td>
             <td>{company.sendMethodName}</td>
+            <td>
+              <button
+                className="btn btn-outline-danger"
+                onClick={() => onDeleteClick(company)}
+              >
+                Remover
+              </button>
+            </td>
           </tr>
         );
       })}
@@ -32,7 +41,8 @@ const CompanyList = ({ companies }) => (
 );
 
 CompanyList.propTypes = {
-  companies: PropTypes.array.isRequired
+  companies: PropTypes.array.isRequired,
+  onDeleteClick: PropTypes.func.isRequired
 };
 
 export default CompanyList;

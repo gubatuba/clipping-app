@@ -6,6 +6,8 @@ import PropTypes from "prop-types";
 import CompanyForm from "./CompanyForm";
 import { newCompany } from "../../../tools/mockData";
 import { sendMethods } from "../constants/SendMethod";
+import Spinner from "../common/Spinner";
+import { toast } from "react-toastify";
 
 function ManageCompanyPage({
   companies,
@@ -14,10 +16,12 @@ function ManageCompanyPage({
   loadCompanies,
   loadProducts,
   saveCompany,
+  history,
   ...props
 }) {
   const [company, setCompany] = useState({ ...props.company });
   const [errors, setErrors] = useState({});
+  const [saving, setSaving] = useState(false);
 
   useEffect(() => {
     if (products.length === 0) {
@@ -29,8 +33,10 @@ function ManageCompanyPage({
       loadCompanies().catch(error => {
         alert("Loading companies failed " + error);
       });
+    } else {
+      setCompany({ ...props.company });
     }
-  }, []);
+  }, [props.company]);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -40,12 +46,35 @@ function ManageCompanyPage({
     }));
   }
 
+  function formIsValid() {
+    const { name, sendMethod } = company;
+    const errors = {};
+
+    if (!name) errors.name = "O nome da empresa é obrigatório!";
+    if (!sendMethod) errors.sendMethod = "O método de envio é obrigatório!";
+
+    setErrors(errors);
+    return Object.keys(errors).length === 0;
+  }
+
   function handleSave(event) {
     event.preventDefault();
-    debugger;
-    saveCompany(company);
+    if (!formIsValid()) return;
+    setSaving(true);
+    saveCompany(company)
+      .then(() => {
+        toast.success("Empresa gravada com sucesso");
+        history.push("/companies");
+      })
+      .catch(error => {
+        setSaving(false);
+        setErrors({ onSave: error.message });
+      });
   }
-  return (
+
+  return companies.length === 0 || products.length === 0 ? (
+    <Spinner />
+  ) : (
     <CompanyForm
       company={company}
       errors={errors}
@@ -53,6 +82,7 @@ function ManageCompanyPage({
       sendMethods={sendMethods}
       onChange={handleChange}
       onSave={handleSave}
+      saving={saving}
     />
   );
 }
@@ -64,12 +94,22 @@ ManageCompanyPage.propTypes = {
   companies: PropTypes.array.isRequired,
   loadCompanies: PropTypes.func.isRequired,
   loadProducts: PropTypes.func.isRequired,
-  saveCompany: PropTypes.func.isRequired
+  saveCompany: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired
 };
 
-function mapStateToProps(state) {
+function getCompanyBySlug(companies, slug) {
+  return companies.find(company => company.slug === slug || null);
+}
+
+function mapStateToProps(state, ownProps) {
+  const slug = ownProps.match.params.slug;
+  const company =
+    slug && state.companies.length > 0
+      ? getCompanyBySlug(state.companies, slug)
+      : newCompany;
   return {
-    company: newCompany,
+    company,
     companies: state.companies,
     products: state.products,
     sendMethods

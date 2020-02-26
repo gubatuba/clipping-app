@@ -30,7 +30,7 @@ server.use(jsonServer.bodyParser);
 
 // Simulate delay on all requests
 server.use(function(req, res, next) {
-  setTimeout(next, 0);
+  setTimeout(next, 2000);
 });
 
 // Declaring custom routes below. Add custom routes before JSON Server router
@@ -74,5 +74,7 @@ function createSlug(value) {
 }
 
 function validateCompany(company) {
+  if (!company.name) return "O nome da empresa é obrigatório!";
+  if (!company.sendMethod) return "O método de envio é obrigatório!";
   return "";
 }

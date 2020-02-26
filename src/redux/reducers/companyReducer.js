@@ -11,6 +11,8 @@ export default function companyReducer(state = initialState.companies, action) {
       );
     case types.LOAD_COMPANIES_SUCCESS:
       return action.companies;
+    case types.DELETE_COMPANY_OPTIMISTIC:
+      return state.filter(company => company.id !== action.company.id);
     default:
       return state;
   }

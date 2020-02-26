@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import TextInput from "../common/TextInput";
 import SelectInput from "../common/SelectInput";
+import ProductCheckList from "../products/ProductCheckList";
 
 const CompanyForm = ({
   company,
@@ -36,30 +37,30 @@ const CompanyForm = ({
       />
 
       <TextInput
-        name="fullAddressaddress"
+        name="address"
         label="Endereço"
-        value={company.fullAddressaddress}
+        value={company.address}
         onChange={onChange}
         error={errors.address}
       />
       <TextInput
-        name="fullAddress.postalCode"
+        name="postalCode"
         label="CEP"
-        value={company.fullAddress.postalCode}
+        value={company.postalCode}
         onChange={onChange}
         error={errors.postalCode}
       />
       <TextInput
         name="city"
         label="Cidade"
-        value={company.fullAddress.city}
+        value={company.city}
         onChange={onChange}
         error={errors.city}
       />
       <TextInput
         name="state"
         label="Estado"
-        value={company.fullAddress.state}
+        value={company.state}
         onChange={onChange}
         error={errors.state}
       />
@@ -80,47 +81,93 @@ const CompanyForm = ({
 
       <h3>Contato</h3>
       <TextInput
-        name="title"
+        name="contactTitle"
         label="Título"
-        value={company.contact.title}
+        value={company.contactTitle}
         onChange={onChange}
-        error={errors.title}
+        error={errors.contactTitle}
       />
       <TextInput
-        name="name"
+        name="contactName"
         label="Nome"
-        value={company.contact.name}
+        value={company.contactName}
         onChange={onChange}
-        error={errors.name}
+        error={errors.contactName}
       />
       <TextInput
-        name="position"
+        name="contactPosition"
         label="Cargo"
-        value={company.contact.position}
+        value={company.contactPosition}
         onChange={onChange}
-        error={errors.position}
+        error={errors.contactPosition}
       />
       <TextInput
-        name="phone"
+        name="contactPhone"
         label="Fixo"
-        value={company.contact.phone}
+        value={company.contactPhone}
         onChange={onChange}
-        error={errors.phone}
+        error={errors.contactPhone}
       />
       <TextInput
-        name="cellphone"
+        name="contactCellPhone"
         label="Celular"
-        value={company.contact.cellphone}
+        value={company.contactCellPhone}
         onChange={onChange}
-        error={errors.cellphone}
+        error={errors.contactCellPhone}
       />
       <TextInput
-        name="email"
+        name="contactEmail"
         label="E-mail"
-        value={company.contact.email}
+        value={company.contactEmail}
         onChange={onChange}
-        error={errors.email}
+        error={errors.contactEmail}
       />
+
+      <h3>Contato Financeiro</h3>
+      <TextInput
+        name="financialContactTitle"
+        label="Título"
+        value={company.financialContactTitle}
+        onChange={onChange}
+        error={errors.financialContactTitle}
+      />
+      <TextInput
+        name="financialContactName"
+        label="Nome"
+        value={company.financialContactName}
+        onChange={onChange}
+        error={errors.financialContactName}
+      />
+      <TextInput
+        name="financialContactPosition"
+        label="Cargo"
+        value={company.financialContactPosition}
+        onChange={onChange}
+        error={errors.financialContactPosition}
+      />
+      <TextInput
+        name="financialContactPhone"
+        label="Fixo"
+        value={company.financialContactPhone}
+        onChange={onChange}
+        error={errors.financialContactPhone}
+      />
+      <TextInput
+        name="financialContactCellPhone"
+        label="Celular"
+        value={company.financialContactCellPhone}
+        onChange={onChange}
+        error={errors.financialContactCellPhone}
+      />
+      <TextInput
+        name="financialContactEmail"
+        label="E-mail"
+        value={company.financialContactEmail}
+        onChange={onChange}
+        error={errors.financialContactEmail}
+      />
+
+      <ProductCheckList products={products} />
 
       <SelectInput
         name="sendMethod"
