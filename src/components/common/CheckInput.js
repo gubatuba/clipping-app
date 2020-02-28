@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const CheckInput = ({ id, name, label, value, onChange, error }) => {
-  let wrapperClass = "custom-control custom-checkbox";
+  let wrapperClass = "form-group form-check";
   if (error && error.length > 0) {
     wrapperClass += " " + "has-error";
   }
@@ -11,13 +11,13 @@ const CheckInput = ({ id, name, label, value, onChange, error }) => {
     <div className={wrapperClass}>
       <input
         type="checkbox"
-        className="custom-control-input"
+        className="form-check-input"
         id={id}
         name={name}
-        checked={!!value}
+        checked={value}
         onChange={onChange}
       />
-      <label className="custom-control-label" htmlFor={name}>
+      <label className="form-check-label" htmlFor={id} >
         {label}
       </label>
     </div>

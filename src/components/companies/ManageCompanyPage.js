@@ -32,29 +32,37 @@ function ManageCompanyPage({
 
   function handleChange(event) {
     const { name, value } = event.target;
-    debugger;
+
     setCompany(prevCompany => ({
       ...prevCompany,
       [name]: name === "sendMethod" ? parseInt(value, 10) : value
     }));
   }
 
-  function isChecked(check) {
-    return check === "on";
-  }
-
   function handleChangeProduct(event) {
-    const { id, value } = event.target;
-    const prevCompany = company;
+    const { id, checked } = event.target;
+    let newProducts = [];
 
-    prevCompany.products.forEach(product => {
-      if (product.id === parseInt(id, 10)) {
-        product.isEnable = isChecked(value);
-      }
+    props.company.products.forEach(product => {
+
+
+      let newProduct = {}
+      newProduct.isEnable = product.id === parseInt(id, 10) ? checked : product.isEnable;
+      newProduct.id = product.id
+      newProduct.name = product.name
+
+      newProducts.push(newProduct)
     });
-    setCompany(prevCompany);
-    console.log(prevCompany);
-    console.log(company);
+
+    let newCompany = props.company;
+    newCompany.products = newProducts;
+
+
+    setCompany(prevCompany => ({
+      ...prevCompany,
+      products: [...prevCompany.products, { id: 5, name: "aa", isEnable: true }]
+      /*[prevCompany.products[parseInt(id, 10)].isEnable]: false*/
+    }));
     /*{
       ...prevCompany.products.forEach(element => {
         if (element.name === name) {
@@ -93,16 +101,16 @@ function ManageCompanyPage({
   return companies.length === 0 ? (
     <Spinner />
   ) : (
-    <CompanyForm
-      company={company}
-      errors={errors}
-      sendMethods={sendMethods}
-      onChange={handleChange}
-      onChangeProduct={handleChangeProduct}
-      onSave={handleSave}
-      saving={saving}
-    />
-  );
+      <CompanyForm
+        company={company}
+        errors={errors}
+        sendMethods={sendMethods}
+        onChange={handleChange}
+        onChangeProduct={handleChangeProduct}
+        onSave={handleSave}
+        saving={saving}
+      />
+    );
 }
 
 ManageCompanyPage.propTypes = {
