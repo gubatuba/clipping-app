@@ -22,7 +22,32 @@ const companies = [
     financialContactPhone: "2112345678",
     financialContactCellPhone: "21123456789",
     financialContactEmail: "emailfin@empresa1.com",
-    products: [{ id: 1 }, { id: 2 }, { id: 3 }],
+    products: [
+      {
+        id: 1,
+        name: "Seguros - Eventos",
+        type: "report",
+        isEnable: false
+      },
+      {
+        id: 2,
+        name: "Seguros - Mercado",
+        type: "report",
+        isEnable: false
+      },
+      {
+        id: 3,
+        name: "Clipping - Seguros",
+        type: "clipping",
+        isEnable: true
+      },
+      {
+        id: 4,
+        name: "Clipping - Saúde",
+        type: "clipping",
+        isEnable: false
+      }
+    ],
     sendMethod: 1
   },
   {
@@ -48,7 +73,32 @@ const companies = [
     financialContactPhone: "2112345678",
     financialContactCellPhone: "21123456789",
     financialContactEmail: "emailfin@empresa2.com",
-    products: [{ id: 1 }, { id: 2 }, { id: 3 }],
+    products: [
+      {
+        id: 1,
+        name: "Seguros - Eventos",
+        type: "report",
+        isEnable: false
+      },
+      {
+        id: 2,
+        name: "Seguros - Mercado",
+        type: "report",
+        isEnable: false
+      },
+      {
+        id: 3,
+        name: "Clipping - Seguros",
+        type: "clipping",
+        isEnable: true
+      },
+      {
+        id: 4,
+        name: "Clipping - Saúde",
+        type: "clipping",
+        isEnable: false
+      }
+    ],
     sendMethod: 1
   },
   {
@@ -74,7 +124,32 @@ const companies = [
     financialContactPhone: "2112345678",
     financialContactCellPhone: "21123456789",
     financialContactEmail: "emailfin@empresa3.com",
-    products: [{ id: 1 }, { id: 2 }, { id: 3 }],
+    products: [
+      {
+        id: 1,
+        name: "Seguros - Eventos",
+        type: "report",
+        isEnable: false
+      },
+      {
+        id: 2,
+        name: "Seguros - Mercado",
+        type: "report",
+        isEnable: false
+      },
+      {
+        id: 3,
+        name: "Clipping - Seguros",
+        type: "clipping",
+        isEnable: true
+      },
+      {
+        id: 4,
+        name: "Clipping - Saúde",
+        type: "clipping",
+        isEnable: false
+      }
+    ],
     sendMethod: 1
   },
   {
@@ -100,7 +175,32 @@ const companies = [
     financialContactPhone: "2112345678",
     financialContactCellPhone: "21123456789",
     financialContactEmail: "emailfin@empresa4.com",
-    products: [{ id: 1 }, { id: 2 }, { id: 3 }],
+    products: [
+      {
+        id: 1,
+        name: "Seguros - Eventos",
+        type: "report",
+        isEnable: false
+      },
+      {
+        id: 2,
+        name: "Seguros - Mercado",
+        type: "report",
+        isEnable: false
+      },
+      {
+        id: 3,
+        name: "Clipping - Seguros",
+        type: "clipping",
+        isEnable: true
+      },
+      {
+        id: 4,
+        name: "Clipping - Saúde",
+        type: "clipping",
+        isEnable: false
+      }
+    ],
     sendMethod: 2
   }
 ];
@@ -151,7 +251,32 @@ const newCompany = {
   financialContactPhone: "",
   financialContactCellPhone: "",
   financialContactEmail: "",
-  products: [],
+  products: [
+    {
+      id: 1,
+      name: "Seguros - Eventos",
+      type: "report",
+      isEnable: false
+    },
+    {
+      id: 2,
+      name: "Seguros - Mercado",
+      type: "report",
+      isEnable: false
+    },
+    {
+      id: 3,
+      name: "Clipping - Seguros",
+      type: "clipping",
+      isEnable: false
+    },
+    {
+      id: 4,
+      name: "Clipping - Saúde",
+      type: "clipping",
+      isEnable: false
+    }
+  ],
   sendMethod: null
 };
 

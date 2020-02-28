@@ -6,10 +6,10 @@ import ProductCheckList from "../products/ProductCheckList";
 
 const CompanyForm = ({
   company,
-  products,
   sendMethods,
   onSave,
   onChange,
+  onChangeProduct,
   saving = false,
   errors = {}
 }) => {
@@ -167,7 +167,10 @@ const CompanyForm = ({
         error={errors.financialContactEmail}
       />
 
-      <ProductCheckList products={products} />
+      <ProductCheckList
+        products={company.products}
+        onChange={onChangeProduct}
+      />
 
       <SelectInput
         name="sendMethod"
@@ -190,12 +193,12 @@ const CompanyForm = ({
 };
 
 CompanyForm.propTypes = {
-  products: PropTypes.array.isRequired,
   company: PropTypes.object.isRequired,
   sendMethods: PropTypes.array.isRequired,
   errors: PropTypes.object,
   onSave: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
+  onChangeProduct: PropTypes.func.isRequired,
   saving: PropTypes.bool
 };
 

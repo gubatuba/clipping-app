@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { loadCompanies, saveCompany } from "../../redux/actions/CompanyActions";
-import { loadProducts } from "../../redux/actions/ProductActions";
 import PropTypes from "prop-types";
 import CompanyForm from "./CompanyForm";
 import { newCompany } from "../../../tools/mockData";
@@ -11,10 +10,8 @@ import { toast } from "react-toastify";
 
 function ManageCompanyPage({
   companies,
-  products,
   sendMethods,
   loadCompanies,
-  loadProducts,
   saveCompany,
   history,
   ...props
@@ -24,11 +21,6 @@ function ManageCompanyPage({
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
-    if (products.length === 0) {
-      loadProducts().catch(error => {
-        alert("Loading products failed " + error);
-      });
-    }
     if (companies.length === 0) {
       loadCompanies().catch(error => {
         alert("Loading companies failed " + error);
@@ -40,10 +32,36 @@ function ManageCompanyPage({
 
   function handleChange(event) {
     const { name, value } = event.target;
+    debugger;
     setCompany(prevCompany => ({
       ...prevCompany,
       [name]: name === "sendMethod" ? parseInt(value, 10) : value
     }));
+  }
+
+  function isChecked(check) {
+    return check === "on";
+  }
+
+  function handleChangeProduct(event) {
+    const { id, value } = event.target;
+    const prevCompany = company;
+
+    prevCompany.products.forEach(product => {
+      if (product.id === parseInt(id, 10)) {
+        product.isEnable = isChecked(value);
+      }
+    });
+    setCompany(prevCompany);
+    console.log(prevCompany);
+    console.log(company);
+    /*{
+      ...prevCompany.products.forEach(element => {
+        if (element.name === name) {
+          element.value = isChecked(value);
+        }
+      })
+    }));*/
   }
 
   function formIsValid() {
@@ -72,15 +90,15 @@ function ManageCompanyPage({
       });
   }
 
-  return companies.length === 0 || products.length === 0 ? (
+  return companies.length === 0 ? (
     <Spinner />
   ) : (
     <CompanyForm
       company={company}
       errors={errors}
-      products={products}
       sendMethods={sendMethods}
       onChange={handleChange}
+      onChangeProduct={handleChangeProduct}
       onSave={handleSave}
       saving={saving}
     />
@@ -89,11 +107,9 @@ function ManageCompanyPage({
 
 ManageCompanyPage.propTypes = {
   company: PropTypes.object.isRequired,
-  products: PropTypes.array.isRequired,
   sendMethods: PropTypes.array.isRequired,
   companies: PropTypes.array.isRequired,
   loadCompanies: PropTypes.func.isRequired,
-  loadProducts: PropTypes.func.isRequired,
   saveCompany: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired
 };
@@ -111,14 +127,12 @@ function mapStateToProps(state, ownProps) {
   return {
     company,
     companies: state.companies,
-    products: state.products,
     sendMethods
   };
 }
 
 const mapDispatchToProps = {
   loadCompanies,
-  loadProducts,
   saveCompany
 };
 
