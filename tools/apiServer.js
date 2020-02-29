@@ -29,7 +29,7 @@ server.use(middlewares);
 server.use(jsonServer.bodyParser);
 
 // Simulate delay on all requests
-server.use(function (req, res, next) {
+server.use(function(req, res, next) {
   setTimeout(next, 0);
 });
 
@@ -44,16 +44,25 @@ server.use((req, res, next) => {
   next();
 });
 
-server.post("/companies/", function (req, res, next) {
+server.post("/companies/", function(req, res, next) {
   const error = validateCompany(req.body);
   if (error) {
     res.status(400).send(error);
   } else {
-    req.body.slug = createSlug(req.body.name); // Generate a slug for new courses.
+    req.body.slug = createSlug(req.body.name); // Generate a slug for new companies.
     next();
   }
 });
 
+server.post("/clients/", function(req, res, next) {
+  const error = validateClient(req.body);
+  if (error) {
+    res.status(400).send(error);
+  } else {
+    req.body.slug = createSlug(req.body.company + " " + req.body.name); // Generate a slug for new clients.
+    next();
+  }
+});
 // Use default router
 server.use(router);
 
@@ -76,5 +85,12 @@ function createSlug(value) {
 function validateCompany(company) {
   if (!company.name) return "O nome da empresa é obrigatório!";
   if (!company.sendMethod) return "O método de envio é obrigatório!";
+  return "";
+}
+
+function validateClient(client) {
+  if (!client.name) return "O nome do cliente é obrigatório!";
+  if (!client.email) return "O email do cliente é obrigatório!";
+  if (!client.sendMethod) return "O método de envio é obrigatório!";
   return "";
 }

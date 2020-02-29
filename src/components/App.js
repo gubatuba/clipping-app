@@ -6,6 +6,7 @@ import PageNotFound from "./PageNotFound";
 import CompaniesPage from "./companies/CompaniesPage";
 import ClientsPage from "./clients/ClientsPage";
 import ManageCompanyPage from "./companies/ManageCompanyPage";
+import ManageClientPage from "./clients/ManageClientPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -19,6 +20,8 @@ function App() {
         <Route exact path="/clients" component={ClientsPage} />
         <Route exact path="/company/:slug" component={ManageCompanyPage} />
         <Route exact path="/company" component={ManageCompanyPage} />
+        <Route exact path="/client/:slug" component={ManageClientPage} />
+        <Route exact path="/client" component={ManageClientPage} />
         <Route component={PageNotFound} />
       </Switch>
       <ToastContainer autoClose={3000} hideProgressBar />

@@ -228,6 +228,199 @@ const products = [
   }
 ];
 
+const clients = [
+  {
+    id: 1,
+    company: "Emp1",
+    name: "Nome 1",
+    slug: "nome-1",
+    title: "Titulo1",
+    position: "Posicao1",
+    phone: "321654987",
+    cellPhone: "123456789",
+    email: "email1@empresa1.com",
+    products: [
+      {
+        id: 1,
+        name: "Seguros - Eventos",
+        type: "report",
+        isEnable: false
+      },
+      {
+        id: 2,
+        name: "Seguros - Mercado",
+        type: "report",
+        isEnable: false
+      },
+      {
+        id: 3,
+        name: "Clipping - Seguros",
+        type: "clipping",
+        isEnable: false
+      },
+      {
+        id: 4,
+        name: "Clipping - Saúde",
+        type: "clipping",
+        isEnable: false
+      }
+    ],
+    sendMethod: 1
+  },
+  {
+    id: 2,
+    company: "Emp2",
+    name: "Nome 2",
+    slug: "nome-2",
+    title: "Titulo2",
+    position: "Posicao2",
+    phone: "321654987",
+    cellPhone: "123456789",
+    email: "email2@empresa2.com",
+    products: [
+      {
+        id: 1,
+        name: "Seguros - Eventos",
+        type: "report",
+        isEnable: false
+      },
+      {
+        id: 2,
+        name: "Seguros - Mercado",
+        type: "report",
+        isEnable: false
+      },
+      {
+        id: 3,
+        name: "Clipping - Seguros",
+        type: "clipping",
+        isEnable: false
+      },
+      {
+        id: 4,
+        name: "Clipping - Saúde",
+        type: "clipping",
+        isEnable: false
+      }
+    ],
+    sendMethod: 2
+  },
+  {
+    id: 3,
+    company: "Emp3",
+    name: "Nome 3",
+    slug: "nome-3",
+    title: "Titulo3",
+    position: "Posicao3",
+    phone: "321654987",
+    cellPhone: "123456789",
+    email: "email3@empresa3.com",
+    products: [
+      {
+        id: 1,
+        name: "Seguros - Eventos",
+        type: "report",
+        isEnable: false
+      },
+      {
+        id: 2,
+        name: "Seguros - Mercado",
+        type: "report",
+        isEnable: false
+      },
+      {
+        id: 3,
+        name: "Clipping - Seguros",
+        type: "clipping",
+        isEnable: false
+      },
+      {
+        id: 4,
+        name: "Clipping - Saúde",
+        type: "clipping",
+        isEnable: false
+      }
+    ],
+    sendMethod: 1
+  },
+  {
+    id: 4,
+    company: "Emp4",
+    name: "Nome 4",
+    slug: "nome-4",
+    title: "Titulo4",
+    position: "Posicao4",
+    phone: "321654987",
+    cellPhone: "123456789",
+    email: "email4@empresa4.com",
+    products: [
+      {
+        id: 1,
+        name: "Seguros - Eventos",
+        type: "report",
+        isEnable: false
+      },
+      {
+        id: 2,
+        name: "Seguros - Mercado",
+        type: "report",
+        isEnable: false
+      },
+      {
+        id: 3,
+        name: "Clipping - Seguros",
+        type: "clipping",
+        isEnable: false
+      },
+      {
+        id: 4,
+        name: "Clipping - Saúde",
+        type: "clipping",
+        isEnable: false
+      }
+    ],
+    sendMethod: 2
+  },
+  {
+    id: 5,
+    company: "Emp4",
+    name: "Nome 2",
+    slug: "nome-2",
+    title: "Titulo2",
+    position: "Posicao2",
+    phone: "321654987",
+    cellPhone: "123456789",
+    email: "email2@empresa4.com",
+    products: [
+      {
+        id: 1,
+        name: "Seguros - Eventos",
+        type: "report",
+        isEnable: false
+      },
+      {
+        id: 2,
+        name: "Seguros - Mercado",
+        type: "report",
+        isEnable: false
+      },
+      {
+        id: 3,
+        name: "Clipping - Seguros",
+        type: "clipping",
+        isEnable: false
+      },
+      {
+        id: 4,
+        name: "Clipping - Saúde",
+        type: "clipping",
+        isEnable: false
+      }
+    ],
+    sendMethod: 1
+  }
+];
+
 const newCompany = {
   id: null,
   name: "",
@@ -280,9 +473,50 @@ const newCompany = {
   sendMethod: null
 };
 
+const newClient = {
+  id: null,
+  company: "",
+  name: "",
+  slug: "",
+  title: "",
+  position: "",
+  phone: "",
+  cellPhone: "",
+  email: "",
+  products: [
+    {
+      id: 1,
+      name: "Seguros - Eventos",
+      type: "report",
+      isEnable: false
+    },
+    {
+      id: 2,
+      name: "Seguros - Mercado",
+      type: "report",
+      isEnable: false
+    },
+    {
+      id: 3,
+      name: "Clipping - Seguros",
+      type: "clipping",
+      isEnable: false
+    },
+    {
+      id: 4,
+      name: "Clipping - Saúde",
+      type: "clipping",
+      isEnable: false
+    }
+  ],
+  sendMethod: null
+};
+
 // Using CommonJS style export so we can consume via Node (without using Babel-node)
 module.exports = {
   newCompany,
+  newClient,
+  clients,
   companies,
   products
 };

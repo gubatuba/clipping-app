@@ -1,40 +1,40 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { loadCompanies, saveCompany } from "../../redux/actions/CompanyActions";
+import { loadClients, saveClient } from "../../redux/actions/ClientActions";
 import PropTypes from "prop-types";
-import CompanyForm from "./CompanyForm";
-import { newCompany } from "../../../tools/mockData";
+import ClientForm from "./ClientForm";
+import { newClient } from "../../../tools/mockData";
 import { sendMethods } from "../constants/SendMethod";
 import Spinner from "../common/Spinner";
 import { toast } from "react-toastify";
 
-function ManageCompanyPage({
-  companies,
+function ManageClientPage({
+  clients,
   sendMethods,
-  loadCompanies,
-  saveCompany,
+  loadClients,
+  saveClient,
   history,
   ...props
 }) {
-  const [company, setCompany] = useState({ ...props.company });
+  const [client, setClient] = useState({ ...props.client });
   const [errors, setErrors] = useState({});
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
-    if (companies.length === 0) {
-      loadCompanies().catch(error => {
-        alert("Loading companies failed " + error);
+    if (clients.length === 0) {
+      loadClients().catch(error => {
+        alert("Loading clients failed " + error);
       });
     } else {
-      setCompany({ ...props.company });
+      setClient({ ...props.client });
     }
-  }, [props.company]);
+  }, [props.client]);
 
   function handleChange(event) {
     const { name, value } = event.target;
 
-    setCompany(prevCompany => ({
-      ...prevCompany,
+    setClient(prevClient => ({
+      ...prevClient,
       [name]: name === "sendMethod" ? parseInt(value, 10) : value
     }));
   }
@@ -43,7 +43,7 @@ function ManageCompanyPage({
     const { id, checked } = event.target;
     let newProducts = [];
 
-    props.company.products.forEach(product => {
+    props.client.products.forEach(product => {
       let newProduct = {};
       newProduct.isEnable =
         product.id === parseInt(id, 10) ? checked : product.isEnable;
@@ -53,12 +53,12 @@ function ManageCompanyPage({
       newProducts.push(newProduct);
     });
 
-    let newCompany = props.company;
-    newCompany.products = newProducts;
+    let newClient = props.client;
+    newClient.products = newProducts;
 
-    setCompany(newCompany);
+    setClient(newClient);
     /*{
-      ...prevCompany.products.forEach(element => {
+      ...prevClient.products.forEach(element => {
         if (element.name === name) {
           element.value = isChecked(value);
         }
@@ -67,7 +67,7 @@ function ManageCompanyPage({
   }
 
   function formIsValid() {
-    const { name, sendMethod } = company;
+    const { name, sendMethod } = client;
     const errors = {};
 
     if (!name) errors.name = "O nome da empresa é obrigatório!";
@@ -81,10 +81,10 @@ function ManageCompanyPage({
     event.preventDefault();
     if (!formIsValid()) return;
     setSaving(true);
-    saveCompany(company)
+    saveClient(client)
       .then(() => {
         toast.success("Empresa gravada com sucesso");
-        history.push("/companies");
+        history.push("/clients");
       })
       .catch(error => {
         setSaving(false);
@@ -92,11 +92,11 @@ function ManageCompanyPage({
       });
   }
 
-  return companies.length === 0 ? (
+  return clients.length === 0 ? (
     <Spinner />
   ) : (
-    <CompanyForm
-      company={company}
+    <ClientForm
+      client={client}
       errors={errors}
       sendMethods={sendMethods}
       onChange={handleChange}
@@ -107,35 +107,35 @@ function ManageCompanyPage({
   );
 }
 
-ManageCompanyPage.propTypes = {
-  company: PropTypes.object.isRequired,
+ManageClientPage.propTypes = {
+  client: PropTypes.object.isRequired,
   sendMethods: PropTypes.array.isRequired,
-  companies: PropTypes.array.isRequired,
-  loadCompanies: PropTypes.func.isRequired,
-  saveCompany: PropTypes.func.isRequired,
+  clients: PropTypes.array.isRequired,
+  loadClients: PropTypes.func.isRequired,
+  saveClient: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired
 };
 
-function getCompanyBySlug(companies, slug) {
-  return companies.find(company => company.slug === slug || null);
+function getClientBySlug(clients, slug) {
+  return clients.find(client => client.slug === slug || null);
 }
 
 function mapStateToProps(state, ownProps) {
   const slug = ownProps.match.params.slug;
-  const company =
-    slug && state.companies.length > 0
-      ? getCompanyBySlug(state.companies, slug)
-      : newCompany;
+  const client =
+    slug && state.clients.length > 0
+      ? getClientBySlug(state.clients, slug)
+      : newClient;
   return {
-    company,
-    companies: state.companies,
+    client,
+    clients: state.clients,
     sendMethods
   };
 }
 
 const mapDispatchToProps = {
-  loadCompanies,
-  saveCompany
+  loadClients,
+  saveClient
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ManageCompanyPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ManageClientPage);

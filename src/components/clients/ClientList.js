@@ -2,12 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-const CompanyList = ({ companies, onDeleteClick }) => (
+const ClientList = ({ clients, onDeleteClick }) => (
   <table className="table">
     <thead>
       <tr>
+        <th>Empresa</th>
         <th>Nome</th>
-        <th>Contato</th>
         <th>Email</th>
         <th>Telefone</th>
         <th>Envio</th>
@@ -15,20 +15,20 @@ const CompanyList = ({ companies, onDeleteClick }) => (
       </tr>
     </thead>
     <tbody>
-      {companies.map(company => {
+      {clients.map(client => {
         return (
-          <tr key={company.id}>
+          <tr key={client.id}>
+            <td>{client.company}</td>
             <td>
-              <Link to={"/company/" + company.slug}>{company.name}</Link>
+              <Link to={"/client/" + client.slug}>{client.name}</Link>
             </td>
-            <td>{company.contactName}</td>
-            <td>{company.contactEmail}</td>
-            <td>{company.contactPhone}</td>
-            <td>{company.sendMethodName}</td>
+            <td>{client.email}</td>
+            <td>{client.phone}</td>
+            <td>{client.sendMethodName}</td>
             <td>
               <button
                 className="btn btn-outline-danger"
-                onClick={() => onDeleteClick(company)}
+                onClick={() => onDeleteClick(client)}
               >
                 Remover
               </button>
@@ -40,9 +40,9 @@ const CompanyList = ({ companies, onDeleteClick }) => (
   </table>
 );
 
-CompanyList.propTypes = {
-  companies: PropTypes.array.isRequired,
+ClientList.propTypes = {
+  clients: PropTypes.array.isRequired,
   onDeleteClick: PropTypes.func.isRequired
 };
 
-export default CompanyList;
+export default ClientList;
